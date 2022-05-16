@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('exchange:parse')->dailyAt('16:00'); // В 16 часов объявляется официальный курс на завтра
     }
 
     /**

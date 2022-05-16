@@ -59,7 +59,7 @@ class AuthController extends Controller
         $user->password = bcrypt($password);
         $user->save();
 
-        Mail::to($user)->send(new ForgotPassword($password));
+        Mail::to($user)->send(new ForgotPassword($password)); // Todo:: Сделать на очередях
 
         return redirect(route("home"));
     }
