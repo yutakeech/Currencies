@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ForgotUserEmailJob;
 use App\Mail\ForgotPassword;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
