@@ -2,7 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Currency;
+use App\Models\CurrencyValues;
+use DateTime;
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
@@ -42,11 +43,12 @@ class ExchangeRateParse extends Command
             $currencies = json_decode($json,TRUE);
 
             foreach ($currencies['Valute'] as $currency) {
-                $tableCurrency = Currency::updateOrCreate([
-                    'name' => $currency['Name'],
-                    'char_code' => $currency['CharCode'],
-                    'nominal' => $currency['Nominal']
-                ]);
+                $tableCurrency = CurrencyValues::updateOrCreate(
+                    ['char_code' => $currency['CharCode']],
+                    ['save_date' => date("Y-m-d", strtotime($currencies['@attributes']['Date'])),
+                    'data_value' => $currency['Value']]
+                );
+
                 $tableCurrency->save();
             }
 

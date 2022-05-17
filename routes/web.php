@@ -17,6 +17,8 @@ Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('
 
 Route::middleware("auth:web")->group(function () {
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+    Route::get('/personal', [\App\Http\Controllers\CurrencyViewController::class, 'index'])->name('personal');
+    Route::post('/currencies', [\App\Http\Controllers\PostController::class, 'currencyForm'])->name('currencyForm');
 });
 
 Route::middleware("guest:web")->group(function () {

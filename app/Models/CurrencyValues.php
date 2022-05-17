@@ -5,19 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Currency extends Model
+class CurrencyValues extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
         'char_code',
-        'nominal',
+        'save_date',
         'data_value'
     ];
-
-    public function users()
-    {
-        $this->hasMany(User::class);
-    }
 }
