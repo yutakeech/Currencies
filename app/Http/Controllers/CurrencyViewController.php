@@ -31,9 +31,12 @@ class CurrencyViewController extends Controller
         $data_currency = $currencyView::getExchangeRates($currenciesArray, 10);
 
         foreach ($data_currency as $data) {
-            $target_data[$data->char_code]['date'][] = $data->save_date;
-            $target_data[$data->char_code]['data'][] = (float)$data->data_value;
-            $target_data[$data->char_code]['label'] = $data->char_code;
+            $target_data[$data->char_code]['date'][] = $data->save_date; // Дата текущего курса в днях
+            $target_data[$data->char_code]['data'][] = (float)$data->data_value; // Стоимость валюты относительно рубля
+            $target_data[$data->char_code]['label'] = $data->char_code; // Уникальный символьный код валюты
+            $randomColor = sprintf('#%06X', mt_rand(0, 0xFFFFFF)); // Задаём рандомный цвет для:
+            $target_data[$data->char_code]['borderColor'] = $randomColor; // кривой
+            $target_data[$data->char_code]['backgroundColor'] = $randomColor; // точек
         }
 
         $result = ['data' => [], 'dates' => []];
