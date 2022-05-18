@@ -9,4 +9,5 @@
 3. Laravel <br/>
    php artisan storage:link <br/>
    php artisan migrate --seed <br/>
+   php artisan exchange:parse-first
    php artisan serve
