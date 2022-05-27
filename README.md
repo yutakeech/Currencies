@@ -1,4 +1,4 @@
-Установка
+Установка через Composer:<br/>
 1. Composer <br/>
    composer install
 
@@ -11,3 +11,6 @@
    php artisan migrate --seed <br/>
    php artisan exchange:parse-first <br/>
    php artisan serve
+
+Установка через Docker:<br/>
+    docker-compose up
